@@ -1,0 +1,22 @@
+{% block sidebar %}
+
+
+
+    <!-- Sidebar Widgets Column -->
+    <div class="col-md-4 float-right ">
+        <div class="card my-4">
+            <h5 class="card-header">Popular Posts</h5>
+            {% for post in popular_post %}
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h2 class="card-title">{{ post.title }}</h2>
+                        <p class="card-text text-muted h6">{{ post.author }} | {{ post.created_on }}  </p>
+                        <p class="card-text">{{ post.content|safe|slice:":200" }}</p>
+                        <a href="{% url 'post_detail' post.slug %}" class="btn btn-primary">Continue Reading &rarr;</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock sidebar %}
